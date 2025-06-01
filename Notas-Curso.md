@@ -1,134 +1,168 @@
-# Notas de Curso Git
- 
-[Link de curso](https://www.youtube.com/watch?v=VdGzPZ31ts8&t=14s&ab_channel=HolaMundo)
+# 📚 Notas de Curso Git
 
-## ¿Qué es Git?
-
-Nos permite tener un historial de todo el codigo que escribimos
-
-Cuando el codigo crece hay mas probabilidad de errores.
-
-### Rollback 
-Volver a un version anterior
-
-### Desentralizado
-Cada Dev tiene una copia del codigo, los cambios pueden ser sincronizados
-
-### Usos de Git
-* Historial 
-* Almacenar código
-* Trabajar en equipo 
-* Cuando se indrodujo un error
-
-## Se usa la TERMINAL
-
-## USA GIT BASH
-
-
-### Como tratar los saltos de linea
-
-Desarrollando en windows, el salto de linea agrega 2 caracteres:
-* CR
-* LF
-
-Para subir codigo hay que eliminar CR
-
-Core.autocrfl en TRUE
-
-### Comandos
-
-**git config -h** para ver todos las opciones que tengo en git
-
-**ls dir cd**
-
-**git init** 
-para iniciar git en el directorio
-
-Dentro de **.git** en el directorio correspondiente se van a estar ordenando los archivos y demas cosas
-
-* HEAD
-* config
-* description
-* hooks/
-* info/
-* objects/
-* refs/
-
-La carpeta .git siempre es ignorada
-
-## git add 
-
-Pasa a una esta de **STAGE**, no va a estar en el repositorio, aca **indicamos los cambios que se hicieron**. Se pueden agregar y sacar archivos.
-
-## git commit
-
-Pasamos los archivos **de STAGE a COMMIT** 
-
-## git push
-
-Almacenamos los archivos en un **SERVER**, en general GITHUB
-
-Si eliminamos un archivo tenemos que agregar el archivo eliminado a STAGE para luego ser eliminado del SERVER 
-
-
-
-## Probando
-### git status
-
-Veo si hubo cambios, archivos nuevos, etc.
-
-### git add  
-* puedo poner el **nombre+extensión** del archivo
-* puedo poner una **comilla** "'" para agregar todos los archivos con X extensión          
-* Si pongo un **punto** agrego TODO. Considerado **MALA PRACTICA**
-
-### git commit -m "comentario"
-El comentario tiene que hacer alución a lo que se esta commiteando
-
-
-### git rm ARCHIVO
-
-cuando eliminemos archivos
-
-
-### Renombrar archivo
-mv archivo.txt archivo1.txt
-
-### Archivos para ingnorar siempre
-* Variables de entorno .env
-* contraseñas 
-* Cosas de bases de datos
-
-crear un .gitignore
-
-git add .gitignore
-
-git commit del archivo
-
-### git diff
-
-podemos ver 
-
- 
-
-
-# RAMAS 
-Se pueden bifurcar y volver a unir 
-
-**git branch**
- para ver la rama en la que estoy
-
-**git checkout -b NombreDeLaRama** para crear una nueva rama
-
-
----
-En git: 
-**cat archivo**
-
-Me muestra el contenido
+> **Fuente del curso:** [Git y GitHub desde cero - HolaMundo](https://www.youtube.com/watch?v=VdGzPZ31ts8&t=14s&ab_channel=HolaMundo)
 
 ---
 
-**git checkout Rama** para cambiar de rama
+## 🔍 ¿Qué es Git?
 
-**git merge nombre de la rama** para unir el contenido de los archivos. Para efectuar los cambios tenemos que estar en la rama master, sino no funciona
+Git es un **sistema de control de versiones distribuido** que nos permite mantener un historial completo de todo el código que escribimos. A medida que el código crece, aumenta la probabilidad de errores, y Git nos ayuda a gestionarlos eficientemente.
+
+### 🔑 Características principales
+
+- **📜 Rollback:** Capacidad de volver a una versión anterior del código
+- **🌐 Descentralizado:** Cada desarrollador tiene una copia completa del código
+- **🔄 Sincronización:** Los cambios pueden ser sincronizados entre diferentes copias
+
+### 🎯 Usos principales de Git
+
+- Mantener un historial detallado de cambios
+- Almacenar y versionar código fuente
+- Facilitar el trabajo colaborativo en equipo
+- Identificar cuándo y dónde se introdujo un error
+
+---
+
+## 💻 Configuración inicial
+
+### Terminal y Git Bash
+Git se utiliza principalmente a través de la **terminal** o **Git Bash** en Windows.
+
+### Configuración de saltos de línea
+
+En Windows, los saltos de línea utilizan dos caracteres:
+- **CR** (Carriage Return)
+- **LF** (Line Feed)
+
+Para compatibilidad al subir código, se debe eliminar CR configurando:
+```bash
+git config core.autocrlf true
+```
+
+---
+
+## 📋 Comandos básicos
+
+### Ayuda y navegación
+```bash
+git config -h          # Ver todas las opciones de configuración
+ls                      # Listar archivos (Linux/Mac)
+dir                     # Listar archivos (Windows)
+cd                      # Cambiar directorio
+```
+
+### Inicialización del repositorio
+```bash
+git init               # Inicializar Git en el directorio actual
+```
+
+Al ejecutar `git init`, se crea una carpeta `.git` que contiene:
+- HEAD
+- config
+- description
+- hooks/
+- info/
+- objects/
+- refs/
+
+> ⚠️ **Nota:** La carpeta `.git` siempre es ignorada automáticamente
+
+---
+
+## 🔄 Flujo de trabajo Git
+
+### 1. **Working Directory → Stage**
+```bash
+git add <archivo>      # Agregar archivo específico
+git add *.extensión    # Agregar archivos por extensión
+git add .              # Agregar todos los archivos (⚠️ MALA PRÁCTICA)
+```
+
+### 2. **Stage → Commit**
+```bash
+git commit -m "mensaje descriptivo"
+```
+
+### 3. **Commit → Servidor remoto**
+```bash
+git push               # Subir cambios al servidor (ej: GitHub)
+```
+
+---
+
+## 🛠️ Comandos de gestión
+
+### Verificar estado
+```bash
+git status             # Ver cambios, archivos nuevos, etc.
+```
+
+### Gestión de archivos
+```bash
+git rm <archivo>       # Eliminar archivo del repositorio
+mv archivo.txt nuevo_nombre.txt  # Renombrar archivo
+```
+
+### Ver diferencias
+```bash
+git diff               # Mostrar cambios realizados
+```
+
+### Ver contenido de archivos
+```bash
+cat <archivo>          # Mostrar contenido del archivo
+```
+
+---
+
+## 🚫 Archivos a ignorar
+
+Crear un archivo `.gitignore` para excluir:
+- Variables de entorno (`.env`)
+- Contraseñas
+- Configuraciones de bases de datos
+- Archivos temporales
+
+```bash
+# Ejemplo de .gitignore
+.env
+*.log
+node_modules/
+.DS_Store
+```
+
+**Proceso:**
+1. `git add .gitignore`
+2. `git commit -m "Agregar archivo .gitignore"`
+
+---
+
+## 🌿 Trabajo con ramas (Branches)
+
+Las ramas permiten **bifurcar el desarrollo** y posteriormente **unir los cambios**.
+
+### Comandos de ramas
+```bash
+git branch                    # Ver rama actual
+git checkout -b <nombre>      # Crear y cambiar a nueva rama
+git checkout <rama>           # Cambiar de rama
+git merge <nombre_rama>       # Unir rama (desde master/main)
+```
+
+### 📝 Flujo de trabajo con ramas
+1. Crear nueva rama para función específica
+2. Desarrollar en la rama secundaria
+3. Cambiar a rama principal (master/main)
+4. Hacer merge de los cambios
+
+> ⚠️ **Importante:** Para hacer merge, debes estar en la rama de destino (generalmente master/main)
+
+---
+
+## 📝 Buenas prácticas
+
+- ✅ Hacer commits frecuentes con mensajes descriptivos
+- ✅ Usar ramas para nuevas funcionalidades
+- ✅ Mantener el archivo `.gitignore` actualizado
+- ❌ Evitar `git add .` indiscriminadamente
+- ❌ No commitear archivos sensibles (contraseñas, variables de entorno)
