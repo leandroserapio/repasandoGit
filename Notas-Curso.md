@@ -85,7 +85,7 @@ git commit -m "mensaje descriptivo"
 
 ### 3. **Commit → Servidor remoto**
 ```bash
-git push               # Subir cambios al servidor (ej: GitHub)
+git push -u origin <nombre de la rama>              # Subir cambios al servidor (ej: GitHub)
 ```
 
 ---
